@@ -1,0 +1,139 @@
+# =======================================================
+#               CleanGround Pro Configuration
+#       Next-Gen Multi-Threaded Ground & Entity Sweeper
+# =======================================================
+
+sweep:
+  # Enable automatic periodic sweeps
+  enabled: true
+
+  # Time between sweeps in seconds (300s = 5 minutes)
+  interval-seconds: 300
+
+  # Alert countdown times in seconds
+  warning-times:
+    - 60
+    - 30
+    - 10
+    - 3
+    - 2
+    - 1
+
+  # Also remove empty/unoccupied minecarts and boats during sweep
+  remove-empty-vehicles: true
+
+  # Also remove dropped arrows and thrown tridents that hit the ground
+  remove-projectiles: true
+
+# Smart Item Protection Rules
+item-filter:
+  # Protect custom-named or anvil-renamed items
+  protect-named: true
+
+  # Protect items with custom lore lines
+  protect-lore: true
+
+  # Protect items carrying any enchantments
+  protect-enchanted: true
+
+  # Protect items that were dropped less than N ticks ago (100 ticks = 5 seconds)
+  # Prevents accidentally deleting items a player just dropped or traded
+  minimum-age-ticks: 100
+
+  # Whitelisted materials that are NEVER removed (even if not enchanted/named)
+  whitelist:
+    - "DIAMOND"
+    - "DIAMOND_BLOCK"
+    - "DIAMOND_SWORD"
+    - "DIAMOND_PICKAXE"
+    - "DIAMOND_AXE"
+    - "DIAMOND_SHOVEL"
+    - "DIAMOND_HOE"
+    - "DIAMOND_HELMET"
+    - "DIAMOND_CHESTPLATE"
+    - "DIAMOND_LEGGINGS"
+    - "DIAMOND_BOOTS"
+    - "NETHERITE_INGOT"
+    - "NETHERITE_BLOCK"
+    - "NETHERITE_SWORD"
+    - "NETHERITE_PICKAXE"
+    - "NETHERITE_AXE"
+    - "NETHERITE_SHOVEL"
+    - "NETHERITE_HOE"
+    - "NETHERITE_HELMET"
+    - "NETHERITE_CHESTPLATE"
+    - "NETHERITE_LEGGINGS"
+    - "NETHERITE_BOOTS"
+    - "NETHERITE_UPGRADE_SMITHING_TEMPLATE"
+    - "ELYTRA"
+    - "TOTEM_OF_UNDYING"
+    - "BEACON"
+    - "NETHER_STAR"
+    - "DRAGON_EGG"
+    - "ENCHANTED_GOLDEN_APPLE"
+    - "SHULKER_BOX"
+    - "WHITE_SHULKER_BOX"
+    - "ORANGE_SHULKER_BOX"
+    - "MAGENTA_SHULKER_BOX"
+    - "LIGHT_BLUE_SHULKER_BOX"
+    - "YELLOW_SHULKER_BOX"
+    - "LIME_SHULKER_BOX"
+    - "PINK_SHULKER_BOX"
+    - "GRAY_SHULKER_BOX"
+    - "LIGHT_GRAY_SHULKER_BOX"
+    - "CYAN_SHULKER_BOX"
+    - "PURPLE_SHULKER_BOX"
+    - "BLUE_SHULKER_BOX"
+    - "BROWN_SHULKER_BOX"
+    - "GREEN_SHULKER_BOX"
+    - "RED_SHULKER_BOX"
+    - "BLACK_SHULKER_BOX"
+
+# Hostile Mob Overcrowding Protection
+mob-culling:
+  enabled: true
+
+  # Maximum hostile monsters allowed per chunk (excess are culled)
+  max-hostiles-per-chunk: 25
+
+  # Run mob culling simultaneously during ground sweeps
+  cull-during-sweep: true
+
+  # Strictly protect named mobs (Name Tag)
+  protect-named: true
+
+  # Strictly protect tamed animals (dogs, cats, parrots, horses)
+  protect-tamed: true
+
+  # Strictly protect villagers and wandering traders
+  protect-villagers: true
+
+  # Strictly protect boss entities (Wither, Ender Dragon, Elder Guardian, Warden)
+  protect-bosses: true
+
+# Emergency TPS Protection Trigger
+tps-protection:
+  enabled: true
+
+  # Trigger an emergency sweep if server TPS drops below this threshold
+  tps-threshold: 17.5
+
+  # Minimum cooldown between emergency sweeps in seconds
+  cooldown-seconds: 180
+
+# Audio Cues
+sounds:
+  warning: "UI_BUTTON_CLICK"
+  sweep: "ENTITY_EXPERIENCE_ORB_PICKUP"
+  emergency: "BLOCK_NOTE_BLOCK_BASS"
+
+# Messages (Kyori Adventure MiniMessage & Legacy & Hex supported)
+messages:
+  prefix: "<gradient:#00d2ff:#3a7bd5>[CleanGround]</gradient> "
+  warning: "<yellow>⚠ Ground items will be swept in <gold><bold>%time%s</bold></gold>!</yellow>"
+  warning-final: "<red>⚡ Ground items will be removed in <white><bold>%time%s</bold></white>!</red>"
+  sweep-complete: "<green>✔ Cleared <white><bold>%items%</bold></white> ground items and <white><bold>%mobs%</bold></white> excess mobs.</green> <gray>(%time%ms)</gray>"
+  emergency-triggered: "<red>⚠ Low TPS detected (<white>%tps%</white>)! Emergency cleanup executed.</red>"
+  count: "<gray>World stats: <white><bold>%items%</bold></white> items, <white><bold>%entities%</bold></white> entities in <white><bold>%chunks%</bold></white> loaded chunks.</gray>"
+  reloaded: "<green>CleanGround Pro configuration reloaded successfully.</green>"
+  no-permission: "<red>You do not have permission to execute this command.</red>"
